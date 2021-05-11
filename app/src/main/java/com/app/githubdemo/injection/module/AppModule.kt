@@ -1,6 +1,7 @@
 package com.app.githubdemo.injection.module
 
 import com.app.githubdemo.GithubDemoApp
+import com.app.githubdemo.utils.ImageUtils
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -12,5 +13,11 @@ class AppModule(private val application: GithubDemoApp) {
     @Provides
     internal fun providesApplication(): GithubDemoApp {
         return application
+    }
+
+    @Singleton
+    @Provides
+    internal fun providesImageUtils(): ImageUtils {
+        return ImageUtils()
     }
 }
