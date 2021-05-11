@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:cardCornerRadius="16dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iprImgUser"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/iprTxtUserName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/color_000000"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iprImgUser"
+                tools:text="User Name" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/iprTxtTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="22dp"
+                android:textColor="@color/color_000000"
+                android:textSize="16sp"
+                app:layout_constraintLeft_toRightOf="@id/iprImgUser"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Start" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/iprTxtCreated"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingStart="22dp"
+                android:textColor="@color/color_000000"
+                android:textSize="14sp"
+                app:layout_constraintLeft_toRightOf="@id/iprImgUser"
+                app:layout_constraintTop_toBottomOf="@+id/iprTxtTitle"
+                tools:text="Created At" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/iprTxtClosed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="22dp"
+                android:textColor="@color/color_000000"
+                android:textSize="14sp"
+                app:layout_constraintLeft_toRightOf="@id/iprImgUser"
+                app:layout_constraintTop_toBottomOf="@+id/iprTxtCreated"
+                tools:text="Closed At" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</layout>
