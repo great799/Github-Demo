@@ -35,18 +35,20 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/iprTxtTitle"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:paddingStart="22dp"
+                android:paddingEnd="22dp"
                 android:textColor="@color/color_000000"
                 android:textSize="16sp"
                 app:layout_constraintLeft_toRightOf="@id/iprImgUser"
+                app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="Start" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/iprTxtCreated"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:paddingStart="22dp"
@@ -58,7 +60,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/iprTxtClosed"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:paddingStart="22dp"
                 android:textColor="@color/color_000000"

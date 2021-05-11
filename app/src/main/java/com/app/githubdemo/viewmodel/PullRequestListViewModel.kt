@@ -13,6 +13,7 @@ class PullRequestListViewModel : BaseViewModel() {
     val otherApiErrorsLiveData: MutableLiveData<ErrorType> = MutableLiveData()
     val loadingVisibilityLiveData = MutableLiveData<Boolean>()
     val adapterListLiveData = MutableLiveData<List<PullRequestInfo>>()
+    private var isLoadingPullRequestData = false
 
     init {
         GithubDemoApp.getAppComponent().inject(this)
@@ -22,8 +23,15 @@ class PullRequestListViewModel : BaseViewModel() {
     * Call Api to get data from server
     * */
     fun getPullRequestsFromApi(owner: String, repo: String, state: String) {
-        loadingVisibilityLiveData.value = true
-        callApi(serviceApi.getPullRequestsData(owner, repo, state), ApiTag.PULL_REQUEST_DATA_API)
+        if (!isLoadingPullRequestData) {
+            isLoadingPullRequestData = true
+            loadingVisibilityLiveData.value = true
+            callApi(
+                serviceApi.getPullRequestsData(owner, repo, state),
+                ApiTag.PULL_REQUEST_DATA_API
+            )
+        }
+
     }
 
     override fun onApiSuccess(apiTag: ApiTag, response: Any) {
@@ -32,6 +40,7 @@ class PullRequestListViewModel : BaseViewModel() {
                 loadingVisibilityLiveData.value = false
                 val apiResponse = response as List<PullRequestInfo>
                 adapterListLiveData.value = apiResponse
+                isLoadingPullRequestData = false
             }
         }
     }
@@ -39,20 +48,24 @@ class PullRequestListViewModel : BaseViewModel() {
     override fun onApiError(errorMessage: String?, apiTag: ApiTag) {
         loadingVisibilityLiveData.value = false
         apiErrorLiveData.value = errorMessage
+        isLoadingPullRequestData = false
     }
 
     override fun onTimeout(apiTag: ApiTag) {
         loadingVisibilityLiveData.value = false
         otherApiErrorsLiveData.value = ErrorType.TIMEOUT_ERROR
+        isLoadingPullRequestData = false
     }
 
     override fun onNetworkError(apiTag: ApiTag) {
         loadingVisibilityLiveData.value = false
         otherApiErrorsLiveData.value = ErrorType.NETWORK_ERROR
+        isLoadingPullRequestData = false
     }
 
     override fun onAuthError(apiTag: ApiTag) {
         loadingVisibilityLiveData.value = false
         otherApiErrorsLiveData.value = ErrorType.AUTH_ERROR
+        isLoadingPullRequestData = false
     }
 }

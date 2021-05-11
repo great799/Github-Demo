@@ -54,14 +54,18 @@ class PullRequestListFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         initBindingAndViewModel()
         initUI()
-        if (savedInstanceState == null) {
-            initObservers()
-        }
+        initObservers()
     }
 
     private fun initUI() {
         binding.rvPullRequests.layoutManager = LinearLayoutManager(activity)
-        viewModel.getPullRequestsFromApi(owner = "great799", repo = "Github-Demo", state = "closed")
+        if (adapter == null) {
+            viewModel.getPullRequestsFromApi(
+                owner = "great799",
+                repo = "Github-Demo",
+                state = "closed"
+            )
+        }
     }
 
     private fun setAdapter(pulRequestList: List<PullRequestInfo>) {
