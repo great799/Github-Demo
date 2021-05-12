@@ -45,13 +45,19 @@ abstract class BaseActivity : AppCompatActivity() {
             builder.setCancelable(false)
             alertDialog = builder.create()
         }
-        alertDialog?.show()
+        if (!isFinishing)
+            alertDialog?.show()
     }
 
     fun hideLoading() {
         if (alertDialog != null) {
             alertDialog?.dismiss()
         }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        hideLoading()
     }
 
     fun showToast(message: String, length: Int) {
